@@ -7,7 +7,6 @@ export async function POST(
   { params }: { params: { storeId: string } }
 ) {
   try {
-    console.log("first");
     const { userId } = auth();
     const body = await req.json();
     const {
@@ -60,8 +59,6 @@ export async function POST(
     if (!storeByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
-
-    console.log("----");
 
     const product = await prismadb.product.create({
       data: {
